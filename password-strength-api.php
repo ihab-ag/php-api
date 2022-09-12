@@ -22,6 +22,11 @@ elseif(!preg_match('@[\W]@',$pass)){
         "result"=>"use at least one special character"
     ];
 }
+elseif(strlen($pass)<12){
+    $result=[
+        "result"=>"use at least 12 characters"
+    ];
+}
 else{
     $result=[
         "result"=>"strong password"
