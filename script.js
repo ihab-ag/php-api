@@ -26,7 +26,6 @@ window.onload=()=>{
     function getDays(){
         axios.get('christmas-api.php')
             .then(response => {
-                console.log(response.data.days);
                 day.innerText = response.data.days;
             })
             .catch(error => console.error(error));
