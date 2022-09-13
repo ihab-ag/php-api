@@ -22,7 +22,9 @@ window.onload=()=>{
     palindromeBtn.onclick=()=>{
         getPalindrome();
     }
-
+    passBtn.onclick=()=>{
+        getPass();
+    }
 
     // functions
     // get christmas days from api
@@ -41,19 +43,14 @@ window.onload=()=>{
             })
             .catch(error => console.error(error));
         }
-        // passwod strength api
+        // password strength api
         function getPass(){
-            axios({
-                method: 'post',
-                url: 'password-strength-api',
-                data: {
-                  'a': a.value,
-                  'b': b.value,
-                  'c': c.value
-                }
-              })
+            let bodyFormData = new FormData();
+            bodyFormData.append('password',pass.value);
+            axios.post('password-strength-api.php',bodyFormData)
               .then(response => {
-                equationOutput.innerText=response.data.result;
+                console.log(response.data);
+                passOutput.innerText=response.data.result;
               })
               .catch(error => console.error(error))
         }
