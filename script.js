@@ -18,7 +18,9 @@ window.onload=()=>{
     const day=document.getElementById('days-output');
 
     getDays();
-
+    palindromeBtn.onclick=()=>{
+        getPalindrome();
+    }
 
 
     // functions
