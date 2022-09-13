@@ -30,4 +30,12 @@ window.onload=()=>{
             })
             .catch(error => console.error(error));
         }
+        // get palindrome from api
+        function getPalindrome(){
+            axios.get('christmas-api.php?input="'+palindromeInput.value+'"')
+                .then(response => {
+                    day.innerText = response.data.palindrome;
+                })
+                .catch(error => console.error(error));
+            }
 }
