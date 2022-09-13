@@ -54,4 +54,17 @@ window.onload=()=>{
               })
               .catch(error => console.error(error))
         }
+        // get result from expression api
+        function getResult(){
+            let bodyFormData = new FormData();
+            bodyFormData.append('a',a.value);
+            bodyFormData.append('b',b.value);
+            bodyFormData.append('c',c.value);
+            axios.post('expression-api.php',bodyFormData)
+              .then(response => {
+                console.log(response.data);
+                equationOutput.innerText=response.data.answer;
+              })
+              .catch(error => console.error(error))
+        }
 }
