@@ -15,17 +15,20 @@ window.onload=()=>{
     const passBtn=document.getElementById('pass-btn');
     const passOutput=document.getElementById('pass-output');
     // days
-    const days=document.getElementById('days');
+    const day=document.getElementById('days-output');
 
-
+    getDays();
 
 
 
     // functions
+    // get christmas days from api
     function getDays(){
         axios.get('christmas-api.php')
             .then(response => {
-                days.innerText = response.data["days"];
+                console.log(response.data.days);
+                day.innerText = response.data.days;
             })
             .catch(error => console.error(error));
+        }
 }
