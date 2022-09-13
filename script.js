@@ -16,4 +16,16 @@ window.onload=()=>{
     const passOutput=document.getElementById('pass-output');
     // days
     const days=document.getElementById('days');
+
+
+
+
+
+    // functions
+    function getDays(){
+        axios.get('christmas-api.php')
+            .then(response => {
+                days.innerText = response.data["days"];
+            })
+            .catch(error => console.error(error));
 }
