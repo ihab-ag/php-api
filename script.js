@@ -18,7 +18,7 @@ window.onload=()=>{
     const day=document.getElementById('days-output');
 
     getDays();
-    
+    //  events
     palindromeBtn.onclick=()=>{
         getPalindrome();
     }
@@ -26,6 +26,9 @@ window.onload=()=>{
         getPass();
     }
 
+    solveBtn.onclick=()=>{
+        getResult();
+    }
     // functions
     // get christmas days from api
     function getDays(){
@@ -44,16 +47,16 @@ window.onload=()=>{
             .catch(error => console.error(error));
         }
         // password strength api
-        function getPass(){
-            let bodyFormData = new FormData();
-            bodyFormData.append('password',pass.value);
-            axios.post('password-strength-api.php',bodyFormData)
-              .then(response => {
-                console.log(response.data);
-                passOutput.innerText=response.data.result;
-              })
-              .catch(error => console.error(error))
-        }
+    function getPass(){
+        let bodyFormData = new FormData();
+        bodyFormData.append('password',pass.value);
+        axios.post('password-strength-api.php',bodyFormData)
+            .then(response => {
+            console.log(response.data);
+            passOutput.innerText=response.data.result;
+            })
+            .catch(error => console.error(error))
+    }
         // get result from expression api
         function getResult(){
             let bodyFormData = new FormData();
