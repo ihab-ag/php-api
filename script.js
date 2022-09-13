@@ -18,6 +18,7 @@ window.onload=()=>{
     const day=document.getElementById('days-output');
 
     getDays();
+    
     palindromeBtn.onclick=()=>{
         getPalindrome();
     }
@@ -32,12 +33,13 @@ window.onload=()=>{
             })
             .catch(error => console.error(error));
         }
-        // get palindrome from api
-        function getPalindrome(){
-            axios.get('christmas-api.php?input="'+palindromeInput.value+'"')
-                .then(response => {
-                    palindromeOutput.innerText = response.data.palindrome;
-                })
-                .catch(error => console.error(error));
-            }
+    // get palindrome from api
+    function getPalindrome(){
+        axios.get('palindrome-api.php?input='+palindromeInput.value)
+            .then(response => {
+                console.log(response.data);
+                palindromeOutput.innerText = response.data.palindrome;
+            })
+            .catch(error => console.error(error));
+        }
 }
