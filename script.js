@@ -37,9 +37,24 @@ window.onload=()=>{
     function getPalindrome(){
         axios.get('palindrome-api.php?input='+palindromeInput.value)
             .then(response => {
-                console.log(response.data);
                 palindromeOutput.innerText = response.data.palindrome;
             })
             .catch(error => console.error(error));
+        }
+        // passwod strength api
+        function getPass(){
+            axios({
+                method: 'post',
+                url: 'password-strength-api',
+                data: {
+                  'a': a.value,
+                  'b': b.value,
+                  'c': c.value
+                }
+              })
+              .then(response => {
+                equationOutput.innerText=response.data.result;
+              })
+              .catch(error => console.error(error))
         }
 }
